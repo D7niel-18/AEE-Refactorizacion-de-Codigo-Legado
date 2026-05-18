@@ -54,6 +54,9 @@ public class FacturacionLegacy {
         } else {
             return 0;
         }
+
+// ---- CÓDIGO ANTIGUO COMENTADO ----
+
         /*if (importeBase > 0) {
             if (tipoCliente == 1) {
                 if (esSocioVip == true)
