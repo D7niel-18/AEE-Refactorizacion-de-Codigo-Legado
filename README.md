@@ -19,10 +19,10 @@ Para el IVA crearía una constante ya que es un valor fijo y si en algún moment
 
 Tenemos las siguientes variables:
 
-* cT → costeTotal (Nombre del metodo)  
-* m → importe  
+* cT → calcularTotal (Nombre del metodo)  
+* m → importeBase 
 * tC → tipoCliente  
-* dV → descuentoVip
+* dV → esSocioVip
 
   * **Código Spaghetti.** La anidación de múltiples if-else crea una estructura en forma de flecha \> que hace casi imposible seguir el flujo lógico de ejecución.
 
