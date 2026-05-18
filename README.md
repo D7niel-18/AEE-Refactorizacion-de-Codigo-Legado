@@ -128,7 +128,14 @@ En nuestro caso hemos usado la estructura switch por lo tanto hemos reducido bas
 <img width="705" height="192" alt="test" src="https://github.com/user-attachments/assets/124ddbd1-9d0d-4c79-9897-bd63b74ce9b7" />
 
 3. **Documentación profesional**. Genera la documentación JavaDoc escribiendo / y pulsando *Enter* justo encima del método. Rellena los campos @param explicando qué recibe la función y el @return detallando qué devuelve.
-
+```    
+    /** 
+     * @param importeBase
+     * @param tipoCliente
+     * @param esSocioVip
+     * @return double
+     */
+```
 ---
 - **Entorno utilizado: Visual Studio Code**  
 - **Agentes de IA usados: NINGUNO**
