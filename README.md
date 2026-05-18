@@ -9,6 +9,8 @@
 1. **Verificación inicial.** Ejecuta los tests unitarios. Todo debe salir en verde. Esto os garantiza que el código original, por muy feo que sea, funciona.
 
 Realizado con éxito, no se encuentra ningún problema en su ejecución.
+<img width="637" height="65" alt="test1" src="https://github.com/user-attachments/assets/a8dbadfb-6060-40b1-b4f7-7e3a564f5863" />
+
 
 2. **Oler el código (*Code Smells*).** El Copiloto anotará en un bloc de notas los tres grandes problemas de este código:  
    * **Números mágicos.** ¿Qué significa 0.25 o 0.15? Son valores *hardcodeados* sin contexto. Si mañana el IVA o el descuento cambian, ¿dónde los buscamos?
@@ -119,4 +121,43 @@ En nuestro caso hemos usado la estructura switch por lo tanto hemos reducido bas
         } else {
             return 0;
         }
+```
+## Fase 3: Verificación, Documentación y Entrega
+
+1. **Validación constante**. Vuelve a ejecutar los tests unitarios tras CADA pequeño cambio. ¡Deben seguir en verde\! Si alguno falla, significa que habéis roto el negocio. Usad el control de versiones (Git) para deshacer los cambios y volver a un estado seguro.
+
+<img width="705" height="192" alt="test" src="https://github.com/user-attachments/assets/124ddbd1-9d0d-4c79-9897-bd63b74ce9b7" />
+
+3. **Documentación profesional**. Genera la documentación JavaDoc escribiendo / y pulsando *Enter* justo encima del método. Rellena los campos @param explicando qué recibe la función y el @return detallando qué devuelve.
+```
+/**
+* Calcula el importe total a pagar por un cliente, aplicando descuentos según su categoría y si es socio VIP.
+/ Parámetros:
+    * - importeBase: el importe inicial de la factura.
+    * - tipoCliente: 1 para VIP, 2 para Estándar, cualquier otro valor para Sin categoría.
+    * - esSocioVip: true si el client es socio VIP, false en caso contrario.
+    * Reglas de negocio:
+    * - Clientes VIP con descuento extra (tipoCliente = 1 y esSocioVip = true): 25% de descuento.
+    * - Clientes VIP sin descuento extra (tipoCliente = 1 y esSocioVip = false): 15% de descuento.
+    * Clientes Estándar (tipoCliente = 2): 5% de descuento, independientemente de esSocioVip.
+    * Clientes sin categoría conocida (cualquier otro valor de tipoCliente): 0% de descuento.
+    * - El método debe retornar 0 si el importeBase es negativo o cero.
+    * - El resultado final se calcula aplicando el descuento correspondiente al importeBase.
+    * - El método debe ser refactorizado para mejorar su legibilidad y mantenibilidad, sin modificar su comportamiento externo ni la firma del método.
+    * - Ejemplo de uso:
+    *  FacturacionLegacy facturacion = new FacturacionLegacy();
+    * double total = facturacion.calcularTotal(100.0, 1, true); // Debería retornar 75.0
+    *  FacturacionLegacy facturacion = new FacturacionLegacy();
+    * double total = facturacion.calcularTotal(100.0, 1, false); // Debería retornar 85.0
+    * FacturacionLegacy facturacion = new FacturacionLegacy();
+    * double total = facturacion.calcularTotal(100.0, 2, true
+    * // Debería retornar 95.0
+    * FacturacionLegacy facturacion = new FacturacionLegacy();
+    * double total = facturacion.calcularTotal(100.0, 3, false); // Debería retornar 100.0
+    * FacturacionLegacy facturacion = new FacturacionLegacy();
+    * double total = facturacion.calcularTotal(-50.0, 1, true); // Debería retornar 0.0
+    * FacturacionLegacy facturacion = new FacturacionLegacy();
+    * double total = facturacion.calcularTotal(0.0, 2, false); // Debería retornar 0.0
+    * Nota: El código original del método se encuentra comentado al final del método para referencia durante la refactorización.
+*/
 ```
