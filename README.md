@@ -21,10 +21,11 @@ Para el IVA crearía una constante ya que es un valor fijo y si en algún moment
 
 Tenemos las siguientes variables:
 
-* cT → calcularTotal (Nombre del metodo)  
+* cT → calculoTotal (Nombre del metodo)  
 * m → importeBase 
 * tC → tipoCliente  
 * dV → esSocioVip
+TODO ESTO LO CAMBIAMOS USANDO RENAME SYMBOL Y ASI DE ESTA MANERA SE CAMBIA EN TODOS LADOS SIN NECESIDAD DE CAMBIAR NADA DE CODIGO.
 
 * **Código Spaghetti.** La anidación de múltiples if-else crea una estructura en forma de flecha \> que hace casi imposible seguir el flujo lógico de ejecución.
 
@@ -33,7 +34,7 @@ Para la solución a este problema y que sea más legible hemos elegido el usar u
 public class FacturacionLegacy {
 
     // Método a refactorizar
-    public double calcularTotal(double importeBase, int tipoCliente, boolean esSocioVip) {
+    public double calculoTotal(double importeBase, int tipoCliente, boolean esSocioVip) {
         // Entorno:
         /* tipoCliente esSocioVip importeBase */
         final float IVA = 0.25f;
@@ -84,9 +85,6 @@ Fase 2: Refactorización Asistida por el IDE (Quirófano abierto)
 
 Para el renombramiento de las variables hemos hecho el uso de CTRL+F metes el texto y le pones el texto que tu quieres entonces lo sustituyes todo a la vez.
 
-<img width="345" height="56" alt="1" src="https://github.com/user-attachments/assets/2938f0af-bec0-4705-bce4-78e1ff807fd6" />
-
-
 2. **Extracción de Constantes.** Selecciona los números mágicos (0.25, 0.15, etc.) y usa la herramienta de extracción del IDE para crear constantes private static final en la parte superior de la clase. Usa nombres autoexplicativos como DESCUENTO\_VIP o DESCUENTO\_ESTANDAR.
 
 ```
@@ -129,38 +127,7 @@ En nuestro caso hemos usado la estructura switch por lo tanto hemos reducido bas
 <img width="705" height="192" alt="test" src="https://github.com/user-attachments/assets/124ddbd1-9d0d-4c79-9897-bd63b74ce9b7" />
 
 3. **Documentación profesional**. Genera la documentación JavaDoc escribiendo / y pulsando *Enter* justo encima del método. Rellena los campos @param explicando qué recibe la función y el @return detallando qué devuelve.
-```
-/**
-* Calcula el importe total a pagar por un cliente, aplicando descuentos según su categoría y si es socio VIP.
-/ Parámetros:
-    * - importeBase: el importe inicial de la factura.
-    * - tipoCliente: 1 para VIP, 2 para Estándar, cualquier otro valor para Sin categoría.
-    * - esSocioVip: true si el client es socio VIP, false en caso contrario.
-    * Reglas de negocio:
-    * - Clientes VIP con descuento extra (tipoCliente = 1 y esSocioVip = true): 25% de descuento.
-    * - Clientes VIP sin descuento extra (tipoCliente = 1 y esSocioVip = false): 15% de descuento.
-    * Clientes Estándar (tipoCliente = 2): 5% de descuento, independientemente de esSocioVip.
-    * Clientes sin categoría conocida (cualquier otro valor de tipoCliente): 0% de descuento.
-    * - El método debe retornar 0 si el importeBase es negativo o cero.
-    * - El resultado final se calcula aplicando el descuento correspondiente al importeBase.
-    * - El método debe ser refactorizado para mejorar su legibilidad y mantenibilidad, sin modificar su comportamiento externo ni la firma del método.
-    * - Ejemplo de uso:
-    *  FacturacionLegacy facturacion = new FacturacionLegacy();
-    * double total = facturacion.calcularTotal(100.0, 1, true); // Debería retornar 75.0
-    *  FacturacionLegacy facturacion = new FacturacionLegacy();
-    * double total = facturacion.calcularTotal(100.0, 1, false); // Debería retornar 85.0
-    * FacturacionLegacy facturacion = new FacturacionLegacy();
-    * double total = facturacion.calcularTotal(100.0, 2, true
-    * // Debería retornar 95.0
-    * FacturacionLegacy facturacion = new FacturacionLegacy();
-    * double total = facturacion.calcularTotal(100.0, 3, false); // Debería retornar 100.0
-    * FacturacionLegacy facturacion = new FacturacionLegacy();
-    * double total = facturacion.calcularTotal(-50.0, 1, true); // Debería retornar 0.0
-    * FacturacionLegacy facturacion = new FacturacionLegacy();
-    * double total = facturacion.calcularTotal(0.0, 2, false); // Debería retornar 0.0
-    * Nota: El código original del método se encuentra comentado al final del método para referencia durante la refactorización.
-*/
-```
+
 ---
 - **Entorno utilizado: Visual Studio Code**  
 - **Agentes de IA usados: NINGUNO**
