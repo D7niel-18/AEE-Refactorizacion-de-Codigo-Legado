@@ -5,7 +5,7 @@
 ---
 
 ## Fase 1: Análisis de la Deuda Técnica
-
+ 
 1. **Verificación inicial.** Ejecuta los tests unitarios. Todo debe salir en verde. Esto os garantiza que el código original, por muy feo que sea, funciona.
 
 Realizado con éxito, no se encuentra ningún problema en su ejecución.
