@@ -56,7 +56,6 @@ public class FacturacionLegacy {
         }
 
 // ---- CÓDIGO ANTIGUO COMENTADO ----
-
         /*if (importeBase > 0) {
             if (tipoCliente == 1) {
                 if (esSocioVip == true)
@@ -83,17 +82,19 @@ Fase 2: Refactorización Asistida por el IDE (Quirófano abierto)
 
 Para el renombramiento de las variables hemos hecho el uso de CTRL+F metes el texto y le pones el texto que tu quieres entonces lo sustituyes todo a la vez.
 
+<img width="345" height="56" alt="1" src="https://github.com/user-attachments/assets/2938f0af-bec0-4705-bce4-78e1ff807fd6" />
+
 
 2. **Extracción de Constantes.** Selecciona los números mágicos (0.25, 0.15, etc.) y usa la herramienta de extracción del IDE para crear constantes private static final en la parte superior de la clase. Usa nombres autoexplicativos como DESCUENTO\_VIP o DESCUENTO\_ESTANDAR.
 
 ```
 *// Entorno:*
 
-final float IVA \= 0.25f;
+final float IVA = 0.25f;
 
-final float DESCUENTO \= 0.15f;
+final float DESCUENTO = 0.15f;
 
-final float DESCUENTOEXTRA \= 0.05f;
+final float DESCUENTOEXTRA = 0.05f;
 ```
 
 3. **Cláusulas de Guarda (*Guard Clauses*).** Modifica la estructura de control para "aplanar" el código. Invierte las condiciones lógicas y utiliza retornos tempranos (return) para eliminar **todos** los bloques “*else”*.  
@@ -103,34 +104,19 @@ En nuestro caso hemos usado la estructura switch por lo tanto hemos reducido bas
 
 ```
 *// Algoritmo:*
-
-if (*importeBase* \> 0){
-
-    switch (*tipoCliente*) {
-
-        case 1:
-
-            if (*esSocioVip* \== true)
-
-                return *importeBase* \- (*importeBase* \* IVA);
-
-            else
-
-                return *importeBase* \- (*importeBase* \* DESCUENTO);
-
-        case 2:
-
-            return *importeBase* \- (*importeBase* \* DESCUENTOEXTRA);
-
-        default:
-
-            return *importeBase* \- (*importeBase* \* 0);
-
-    }
-
-} else {
-
-    return 0;
-
-}
+ if (importeBase > 0){
+            switch (tipoCliente) {
+                case 1:
+                    if (esSocioVip == true)
+                        return importeBase - (importeBase * IVA);
+                    else
+                        return importeBase - (importeBase * DESCUENTO);
+                case 2:
+                    return importeBase - (importeBase * DESCUENTOEXTRA);
+                default:
+                    return importeBase - (importeBase * 0);
+            }
+        } else {
+            return 0;
+        }
 ```
