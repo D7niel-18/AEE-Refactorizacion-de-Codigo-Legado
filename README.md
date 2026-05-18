@@ -161,3 +161,6 @@ En nuestro caso hemos usado la estructura switch por lo tanto hemos reducido bas
     * Nota: El código original del método se encuentra comentado al final del método para referencia durante la refactorización.
 */
 ```
+---
+- **Entorno utilizado: Visual Studio Code**  
+- **Agentes de IA usados: NINGUNO**
