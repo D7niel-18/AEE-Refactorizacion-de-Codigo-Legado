@@ -25,6 +25,7 @@ Tenemos las siguientes variables:
 * m → importeBase 
 * tC → tipoCliente  
 * dV → esSocioVip
+
 TODO ESTO LO CAMBIAMOS USANDO RENAME SYMBOL Y ASI DE ESTA MANERA SE CAMBIA EN TODOS LADOS SIN NECESIDAD DE CAMBIAR NADA DE CODIGO.
 
 * **Código Spaghetti.** La anidación de múltiples if-else crea una estructura en forma de flecha \> que hace casi imposible seguir el flujo lógico de ejecución.
